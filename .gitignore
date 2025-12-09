@@ -1,0 +1,38 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.log
+*.cache
+
+# Build artifacts
+dist/
+build/
+*.zip
+*.tar.gz
+
+# Environment files
+.env
+.env.local
+
+# Node modules (if any tooling is added)
+node_modules/
+
+# Python (if any tooling is added)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+
