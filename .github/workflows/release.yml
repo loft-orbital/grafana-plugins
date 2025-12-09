@@ -1,4 +1,4 @@
-name: Release
+name: Release mongodb-datasource
 
 on:
   workflow_dispatch:
@@ -60,7 +60,7 @@ jobs:
           ROOT_URLS: https://dashboards.cloud.loftorbital.com,https://dashboards.sandbox.loftorbital.com
         run: |
           cd plugin
-          npx @grafana/sign-plugin --rootUrls $ROOT_URLS
+          npx @grafana/sign-plugin --rootUrls "$ROOT_URLS"
 
       - name: Zip signed plugin
         id: zip
@@ -76,12 +76,12 @@ jobs:
             RELEASE_TAG="${VERSION}"
           fi
           cd plugin
-          zip -qq -r ../${PLUGIN_ZIP} .
-          echo "filename=${PLUGIN_ZIP}" >> $GITHUB_OUTPUT
-          echo "tag=${RELEASE_TAG}" >> $GITHUB_OUTPUT
+          zip -qq -r "../${PLUGIN_ZIP}" .
+          echo "filename=${PLUGIN_ZIP}" >> "$GITHUB_OUTPUT"
+          echo "tag=${RELEASE_TAG}" >> "$GITHUB_OUTPUT"
 
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@a06a81a03ee405af7f2048a818ed3f03bbf83c7b # v2.5.0
         with:
           tag_name: ${{ steps.zip.outputs.tag }}
           files: ${{ steps.zip.outputs.filename }}
@@ -113,7 +113,7 @@ jobs:
           else
             DOCKER_TAG="${VERSION}"
           fi
-          echo "tag=${DOCKER_TAG}" >> $GITHUB_OUTPUT
+          echo "tag=${DOCKER_TAG}" >> "$GITHUB_OUTPUT"
 
       - name: Set Docker metadata
         id: docker_meta
