@@ -60,7 +60,7 @@ jobs:
           ROOT_URLS: https://dashboards.cloud.loftorbital.com,https://dashboards.sandbox.loftorbital.com
         run: |
           cd plugin
-          npx @grafana/sign-plugin --rootUrls "$ROOT_URLS"
+          npx --yes -p @grafana/sign-plugin --rootUrls "$ROOT_URLS"
 
       - name: Zip signed plugin
         id: zip
