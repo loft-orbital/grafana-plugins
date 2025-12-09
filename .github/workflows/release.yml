@@ -48,7 +48,7 @@ jobs:
       - name: Sign plugin
         env:
           GRAFANA_ACCESS_POLICY_TOKEN: ${{ secrets.GRAFANA_ACCESS_POLICY_TOKEN }}
-          ROOT_URLS: https://dashboards.cloud.loftorbital.com,https://dashboards.sandbox.loftorbital.com
+          ROOT_URLS: https://dashboards.cloud.loftorbital.com,https://dashboards.sandbox.loftorbital.com,https://dashboards.beta.cloud.loftorbital.com
         run: |
           # GRAFANA_ACCESS_POLICY_TOKEN expires after 2026-02-08
           npx --yes @grafana/sign-plugin --rootUrls "$ROOT_URLS"
