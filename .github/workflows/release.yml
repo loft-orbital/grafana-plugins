@@ -52,7 +52,6 @@ jobs:
         run: |
           # GRAFANA_ACCESS_POLICY_TOKEN expires after 2026-02-08
           npx --yes @grafana/sign-plugin --rootUrls "$ROOT_URLS"
-          mv dist haohanyang-mongodb-datasource-signed
 
       - name: Zip signed plugin
         id: zip
@@ -67,8 +66,7 @@ jobs:
             PLUGIN_ZIP="haohanyang-mongodb-datasource-${VERSION_NO_V}-signed.zip"
             RELEASE_TAG="${VERSION}"
           fi
-          cd haohanyang-mongodb-datasource-signed
-          zip -qq -r "../${PLUGIN_ZIP}" .
+          zip -qq -r "../${PLUGIN_ZIP}" dist
           echo "filename=${PLUGIN_ZIP}" >> "$GITHUB_OUTPUT"
           echo "tag=${RELEASE_TAG}" >> "$GITHUB_OUTPUT"
 
